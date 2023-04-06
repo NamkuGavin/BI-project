@@ -1,3 +1,4 @@
+import 'package:bank_islam/shared/color.dart';
 import 'package:bank_islam/shared/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,10 +46,17 @@ class CustomTextStyle {
         fontSize: SizeConfig.pixelData == 1.0 ? 20 : 15);
   }
 
-  static TextStyle bodytext2(BuildContext context) {
+  static TextStyle bodytext2white(BuildContext context) {
     return GoogleFonts.montserrat(
         fontWeight: FontWeight.w400,
         color: Colors.white,
+        fontSize: SizeConfig.pixelData == 1.0 ? 17 : 14);
+  }
+
+  static TextStyle bodytext2black(BuildContext context) {
+    return GoogleFonts.montserrat(
+        fontWeight: FontWeight.w400,
+        color: Colors.black,
         fontSize: SizeConfig.pixelData == 1.0 ? 17 : 14);
   }
 
@@ -58,8 +66,27 @@ class CustomTextStyle {
         fontSize: SizeConfig.pixelData == 1.0 ? 20 : 15);
   }
 
-  static TextStyle textfield(BuildContext context) {
+  static TextStyle textfield1(BuildContext context) {
     return GoogleFonts.montserrat(
         fontSize: SizeConfig.pixelData == 1.0 ? 20 : 15);
+  }
+
+  static TextStyle textfield2(BuildContext context) {
+    return GoogleFonts.montserrat(
+        fontSize: SizeConfig.pixelData == 1.0 ? 30 : 20);
+  }
+
+  static TextStyle textinfored(BuildContext context) {
+    return GoogleFonts.montserrat(
+        fontWeight: FontWeight.w600,
+        color: SharedColor.primary,
+        fontSize: SizeConfig.pixelData == 1.0 ? 17 : 14);
+  }
+
+  static TextStyle textinfoblack(BuildContext context) {
+    return GoogleFonts.montserrat(
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+        fontSize: SizeConfig.pixelData == 1.0 ? 17 : 14);
   }
 }
