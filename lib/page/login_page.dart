@@ -13,21 +13,109 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      key: _scaffoldKey,
       extendBodyBehindAppBar: true,
-      appBar: appBarWidget(),
-      bottomSheet: Align(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: 12),
-          child: Text(
-              "About Bank Islam | Terms & Conditions | Client Charter | User Guide | Privacy Notice © Bank Islam Malaysia Berhad (98127-X). All rights reserved.",
-              style: CustomTextStyle.bodytext2(context)),
+      endDrawer: ClipRRect(
+        borderRadius: BorderRadius.horizontal(left: Radius.circular(25)),
+        child: Drawer(
+          width: SizeConfig.screenWidth! * 0.5,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(50, 30, 50, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          _scaffoldKey.currentState!.closeEndDrawer();
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_rounded,
+                          size: SizeConfig.pixelData == 1.0 ? 30 : 20,
+                        )),
+                    Image.asset("assets/icon/security.png",
+                        scale: SizeConfig.pixelData == 1.0 ? 1 : 2),
+                  ],
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.05),
+                Image.asset(
+                  "assets/image/photo_profile.png",
+                  scale: SizeConfig.pixelData == 1.0 ? 2 : 3,
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Text("L i z a I b r a h i m 9",
+                    style: CustomTextStyle.headline1black(context)),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Text("Is this your security image\nand phrase?",
+                    style: CustomTextStyle.headline2black(context)),
+                SizedBox(height: SizeConfig.screenHeight! * 0.05),
+                Center(
+                    child: Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  direction: Axis.vertical,
+                  children: [
+                    Image.asset("assets/image/icon_profile.png",
+                        scale: SizeConfig.pixelData == 1.0 ? 1.75 : 3),
+                    Text("BTS", style: CustomTextStyle.bodytext1black(context))
+                  ],
+                )),
+                SizedBox(height: SizeConfig.screenHeight! * 0.1),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 12),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _scaffoldKey.currentState!.closeEndDrawer();
+                          },
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Text("Not mine",
+                                style: CustomTextStyle.bodytext1black(context)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 12),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              backgroundColor: SharedColor.primary),
+                          child: Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Text("Yes",
+                                style: CustomTextStyle.bodytext1white(context)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ),
+      appBar: appBarWidget(),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -36,12 +124,24 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         child: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Column(
             children: [
-              leftSide(),
-              rightSide(),
+              Expanded(
+                flex: 14,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    leftSide(),
+                    rightSide(),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Text(
+                    "About Bank Islam | Terms & Conditions | Client Charter | User Guide | Privacy Notice © Bank Islam Malaysia Berhad (98127-X). All rights reserved.",
+                    style: CustomTextStyle.bodytext2(context)),
+              )
             ],
           ),
         ),
@@ -108,10 +208,11 @@ class _LoginPageState extends State<LoginPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("G O   B E Y O N D", style: CustomTextStyle.headline1(context)),
+        Text("G O   B E Y O N D",
+            style: CustomTextStyle.headline1white(context)),
         SizedBox(height: SizeConfig.screenHeight! * 0.03),
         Text("Islamic banking\nfor everyone",
-            style: CustomTextStyle.headline2(context)),
+            style: CustomTextStyle.headline2white(context)),
         SizedBox(height: SizeConfig.screenHeight! * 0.07),
         Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
@@ -148,7 +249,9 @@ class _LoginPageState extends State<LoginPage> {
                         Padding(
                           padding: EdgeInsets.all(15),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _scaffoldKey.currentState!.openEndDrawer();
+                            },
                             style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50),
