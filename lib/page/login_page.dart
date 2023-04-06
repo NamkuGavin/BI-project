@@ -14,107 +14,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool _continue = false;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
-      endDrawer: ClipRRect(
-        borderRadius: BorderRadius.horizontal(left: Radius.circular(25)),
-        child: Drawer(
-          width: SizeConfig.screenWidth! * 0.5,
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(50, 30, 50, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          _scaffoldKey.currentState!.closeEndDrawer();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          size: SizeConfig.pixelData == 1.0 ? 30 : 20,
-                        )),
-                    Image.asset("assets/icon/security.png",
-                        scale: SizeConfig.pixelData == 1.0 ? 1 : 2),
-                  ],
-                ),
-                SizedBox(height: SizeConfig.screenHeight! * 0.05),
-                Image.asset(
-                  "assets/image/photo_profile.png",
-                  scale: SizeConfig.pixelData == 1.0 ? 2 : 3,
-                ),
-                SizedBox(height: SizeConfig.screenHeight! * 0.03),
-                Text("L i z a I b r a h i m 9",
-                    style: CustomTextStyle.headline1black(context)),
-                SizedBox(height: SizeConfig.screenHeight! * 0.03),
-                Text("Is this your security image\nand phrase?",
-                    style: CustomTextStyle.headline2black(context)),
-                SizedBox(height: SizeConfig.screenHeight! * 0.05),
-                Center(
-                    child: Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  direction: Axis.vertical,
-                  children: [
-                    Image.asset("assets/image/icon_profile.png",
-                        scale: SizeConfig.pixelData == 1.0 ? 1.75 : 3),
-                    Text("BTS", style: CustomTextStyle.bodytext1black(context))
-                  ],
-                )),
-                SizedBox(height: SizeConfig.screenHeight! * 0.1),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 12),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _scaffoldKey.currentState!.closeEndDrawer();
-                          },
-                          style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              backgroundColor: Colors.white),
-                          child: Padding(
-                            padding: EdgeInsets.all(20),
-                            child: Text("Not mine",
-                                style: CustomTextStyle.bodytext1black(context)),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 12),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              backgroundColor: SharedColor.primary),
-                          child: Padding(
-                            padding: EdgeInsets.all(20),
-                            child: Text("Yes",
-                                style: CustomTextStyle.bodytext1white(context)),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      endDrawer: _continue ? enddrawerPass() : enddrawerConfirm(),
       appBar: appBarWidget(),
       body: Container(
         decoration: BoxDecoration(
@@ -140,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               Expanded(
                 child: Text(
                     "About Bank Islam | Terms & Conditions | Client Charter | User Guide | Privacy Notice © Bank Islam Malaysia Berhad (98127-X). All rights reserved.",
-                    style: CustomTextStyle.bodytext2(context)),
+                    style: CustomTextStyle.bodytext2white(context)),
               )
             ],
           ),
@@ -160,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
         Padding(
           padding: EdgeInsets.only(right: 50),
           child: Text("Zuhr, Kuala Lumpur 1:05pm",
-              style: CustomTextStyle.bodytext2(context)),
+              style: CustomTextStyle.bodytext2white(context)),
         ),
         Padding(
           padding: EdgeInsets.only(right: 50),
@@ -221,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               width: SizeConfig.screenWidth! * 0.35,
               child: TextFormField(
-                style: CustomTextStyle.textfield(context),
+                style: CustomTextStyle.textfield1(context),
                 decoration: InputDecoration(
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   labelText: "Enter your username",
@@ -285,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                 child: Text("First Time User    |    Forgot Login Details?",
-                    style: CustomTextStyle.bodytext2(context)),
+                    style: CustomTextStyle.bodytext2white(context)),
               ),
             )
           ],
@@ -321,6 +228,217 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  enddrawerConfirm() {
+    return ClipRRect(
+      borderRadius: BorderRadius.horizontal(left: Radius.circular(25)),
+      child: Drawer(
+        width: SizeConfig.screenWidth! * 0.5,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(50, 30, 50, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        _scaffoldKey.currentState!.closeEndDrawer();
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: SizeConfig.pixelData == 1.0 ? 30 : 20,
+                      )),
+                  Image.asset("assets/icon/security.png",
+                      scale: SizeConfig.pixelData == 1.0 ? 1 : 2),
+                ],
+              ),
+              SizedBox(height: SizeConfig.screenHeight! * 0.05),
+              Image.asset(
+                "assets/image/photo_profile.png",
+                scale: SizeConfig.pixelData == 1.0 ? 2 : 3,
+              ),
+              SizedBox(height: SizeConfig.screenHeight! * 0.03),
+              Text("L i z a I b r a h i m 9",
+                  style: CustomTextStyle.headline1black(context)),
+              SizedBox(height: SizeConfig.screenHeight! * 0.03),
+              Text("Is this your security image\nand phrase?",
+                  style: CustomTextStyle.headline2black(context)),
+              SizedBox(height: SizeConfig.screenHeight! * 0.05),
+              Center(
+                  child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                direction: Axis.vertical,
+                children: [
+                  Image.asset("assets/image/icon_profile.png",
+                      scale: SizeConfig.pixelData == 1.0 ? 1.75 : 3),
+                  Text("BTS", style: CustomTextStyle.bodytext1black(context))
+                ],
+              )),
+              SizedBox(height: SizeConfig.screenHeight! * 0.1),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 12),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _scaffoldKey.currentState!.closeEndDrawer();
+                        },
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            backgroundColor: Colors.white),
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Text("Not mine",
+                              style: CustomTextStyle.bodytext1black(context)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 12),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _continue = true;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            backgroundColor: SharedColor.primary),
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Text("Yes",
+                              style: CustomTextStyle.bodytext1white(context)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  enddrawerPass() {
+    return ClipRRect(
+      borderRadius: BorderRadius.horizontal(left: Radius.circular(25)),
+      child: Drawer(
+        width: SizeConfig.screenWidth! * 0.5,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(50, 30, 50, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _continue = false;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: SizeConfig.pixelData == 1.0 ? 30 : 20,
+                      )),
+                  Image.asset("assets/icon/security.png",
+                      scale: SizeConfig.pixelData == 1.0 ? 1 : 2),
+                ],
+              ),
+              SizedBox(height: SizeConfig.screenHeight! * 0.05),
+              Image.asset(
+                "assets/image/photo_profile.png",
+                scale: SizeConfig.pixelData == 1.0 ? 2 : 3,
+              ),
+              SizedBox(height: SizeConfig.screenHeight! * 0.03),
+              Text("L i z a I b r a h i m 9",
+                  style: CustomTextStyle.headline1black(context)),
+              SizedBox(height: SizeConfig.screenHeight! * 0.03),
+              Text("Password, please",
+                  style: CustomTextStyle.headline2black(context)),
+              SizedBox(height: SizeConfig.screenHeight! * 0.03),
+              Text("Password", style: CustomTextStyle.bodytext2black(context)),
+              SizedBox(height: SizeConfig.screenHeight! * 0.01),
+              TextFormField(
+                obscureText: true,
+                style: CustomTextStyle.textfield2(context),
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                  labelText: "What’s your password?",
+                  labelStyle: CustomTextStyle.textlabel(context),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              SizedBox(height: SizeConfig.screenHeight! * 0.01),
+              Align(
+                alignment: Alignment.topRight,
+                child: Text("Forgot Login Details?",
+                    style: CustomTextStyle.textinfored(context)),
+              ),
+              SizedBox(height: SizeConfig.screenHeight! * 0.1),
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.black),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text("Important Notice",
+                            style: CustomTextStyle.textinfoblack(context)),
+                        SizedBox(width: SizeConfig.screenWidth! * 0.01),
+                        Image.asset("assets/icon/bell.png",
+                            scale: SizeConfig.pixelData == 1.0 ? 1.5 : 2),
+                      ],
+                    ),
+                    SizedBox(height: SizeConfig.screenHeight! * 0.02),
+                    Text("Avoid scams! Never reveal your TAC number to anyone.",
+                        style: CustomTextStyle.bodytext2black(context)),
+                  ],
+                ),
+              ),
+              SizedBox(height: SizeConfig.screenHeight! * 0.05),
+              Align(
+                alignment: Alignment.topRight,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size(SizeConfig.screenWidth! * 0.2,
+                          SizeConfig.screenHeight! * 0.07),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      backgroundColor: SharedColor.primary),
+                  child: Text("Login",
+                      style: CustomTextStyle.bodytext1white(context)),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
