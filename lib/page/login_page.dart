@@ -1,9 +1,11 @@
+import 'package:bank_islam/page/home_page.dart';
 import 'package:bank_islam/shared/color.dart';
 import 'package:bank_islam/shared/size_config.dart';
 import 'package:bank_islam/shared/text_style.dart';
 import 'package:bank_islam/widget/grid_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -132,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: InputDecoration(
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   labelText: "Enter your username",
-                  labelStyle: CustomTextStyle.textlabel(context),
+                  labelStyle: CustomTextStyle.textlabel1(context),
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Image.asset("assets/icon/profile.png", scale: 1.75),
@@ -381,7 +383,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: InputDecoration(
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   labelText: "What’s your password?",
-                  labelStyle: CustomTextStyle.textlabel(context),
+                  labelStyle: CustomTextStyle.textlabel1(context),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -424,7 +426,14 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 alignment: Alignment.topRight,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(PageTransition(
+                        child: HomePage(),
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 1),
+                        reverseDuration: Duration(milliseconds: 1),
+                        childCurrent: widget));
+                  },
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(SizeConfig.screenWidth! * 0.2,
                           SizeConfig.screenHeight! * 0.07),
