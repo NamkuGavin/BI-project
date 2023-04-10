@@ -97,6 +97,20 @@ class CustomTextStyle {
 
   static TextStyle bodytext4white(BuildContext context) {
     return GoogleFonts.montserrat(
+        fontWeight: FontWeight.w500,
+        color: Colors.white,
+        fontSize: SizeConfig.pixelData == 1.0 ? 17 : 13);
+  }
+
+  static TextStyle bodytext5black(BuildContext context) {
+    return GoogleFonts.montserrat(
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
+        fontSize: SizeConfig.pixelData == 1.0 ? 17 : 13);
+  }
+
+  static TextStyle bodytext5white(BuildContext context) {
+    return GoogleFonts.montserrat(
         fontWeight: FontWeight.w700,
         color: Colors.white,
         fontSize: SizeConfig.pixelData == 1.0 ? 17 : 12);
@@ -131,16 +145,16 @@ class CustomTextStyle {
 
   static TextStyle textlabel3black(BuildContext context) {
     return GoogleFonts.montserrat(
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
         color: Colors.black,
-        fontSize: SizeConfig.pixelData == 1.0 ? 23 : 17);
+        fontSize: SizeConfig.pixelData == 1.0 ? 23 : 15);
   }
 
   static TextStyle textlabel3white(BuildContext context) {
     return GoogleFonts.montserrat(
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
         color: Colors.black,
-        fontSize: SizeConfig.pixelData == 1.0 ? 23 : 17);
+        fontSize: SizeConfig.pixelData == 1.0 ? 23 : 15);
   }
 
   static TextStyle textinfored(BuildContext context) {
@@ -165,5 +179,11 @@ class CustomTextStyle {
   static TextStyle textfield2(BuildContext context) {
     return GoogleFonts.montserrat(
         fontSize: SizeConfig.pixelData == 1.0 ? 30 : 20);
+  }
+
+  static TextStyle textTitleExpansionPanel(BuildContext context) {
+    return GoogleFonts.montserrat(
+        fontWeight: FontWeight.w600,
+        fontSize: SizeConfig.pixelData == 1.0 ? 17 : 13);
   }
 }

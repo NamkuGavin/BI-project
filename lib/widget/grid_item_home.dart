@@ -18,7 +18,7 @@ class _GridItemHomeState extends State<GridItemHome> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.all(12),
+        padding: SizeConfig.pixelData == 1.0 ? EdgeInsets.all(12) : EdgeInsets.all(5),
         child: Container(
           height: SizeConfig.screenHeight! * 0.15,
           decoration: BoxDecoration(
