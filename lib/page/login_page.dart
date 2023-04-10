@@ -3,6 +3,7 @@ import 'package:bank_islam/shared/color.dart';
 import 'package:bank_islam/shared/size_config.dart';
 import 'package:bank_islam/shared/text_style.dart';
 import 'package:bank_islam/widget/grid_item.dart';
+import 'package:bank_islam/widget/grid_item_security_tips.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -17,13 +18,18 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   bool _continue = false;
+  bool isOpenSecurity = false;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
-      endDrawer: _continue ? enddrawerPass() : enddrawerConfirm(),
+      endDrawer: _continue
+          ? enddrawerPass()
+          : isOpenSecurity
+              ? enddrawerSecurityTips()
+              : enddrawerConfirm(),
       appBar: appBarWidget(),
       body: Container(
         decoration: BoxDecoration(
@@ -37,13 +43,17 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Expanded(
                 flex: 14,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    leftSide(),
-                    rightSide(),
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 100),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      leftSide(),
+                      rightSide(),
+                      securityPanel(),
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -159,6 +169,9 @@ class _LoginPageState extends State<LoginPage> {
                           padding: EdgeInsets.all(15),
                           child: ElevatedButton(
                             onPressed: () {
+                              setState(() {
+                                isOpenSecurity = false;
+                              });
                               _scaffoldKey.currentState!.openEndDrawer();
                             },
                             style: ElevatedButton.styleFrom(
@@ -204,32 +217,37 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   rightSide() {
-    return SizedBox(
-      height: SizeConfig.screenHeight! * 0.5,
-      width: SizeConfig.screenWidth! * 0.3,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GridItem(logo: "assets/icon/trade_dollar.png", title: "Transfer"),
-              GridItem(logo: "assets/icon/card_dollar.png", title: "Pay Bills"),
-              GridItem(logo: "assets/icon/trade_card.png", title: "Reload"),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GridItem(
-                  logo: "assets/icon/profile_fav.png", title: "Favourites"),
-              GridItem(
-                  logo: "assets/icon/saving_money.png", title: "Pay Zakat"),
-              GridItem(logo: "assets/icon/give_dollar.png", title: "Sadaqa"),
-            ],
-          ),
-        ],
+    return Padding(
+      padding: EdgeInsets.only(left: 200),
+      child: SizedBox(
+        height: SizeConfig.screenHeight! * 0.5,
+        width: SizeConfig.screenWidth! * 0.3,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GridItem(
+                    logo: "assets/icon/trade_dollar.png", title: "Transfer"),
+                GridItem(
+                    logo: "assets/icon/card_dollar.png", title: "Pay Bills"),
+                GridItem(logo: "assets/icon/trade_card.png", title: "Reload"),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GridItem(
+                    logo: "assets/icon/profile_fav.png", title: "Favourites"),
+                GridItem(
+                    logo: "assets/icon/saving_money.png", title: "Pay Zakat"),
+                GridItem(logo: "assets/icon/give_dollar.png", title: "Sadaqa"),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -446,6 +464,93 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  enddrawerSecurityTips() {
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.start,
+      direction: Axis.horizontal,
+      children: [
+        RotatedBox(
+          quarterTurns: -1,
+          child: GestureDetector(
+            onTap: () {
+              _scaffoldKey.currentState!.closeEndDrawer();
+            },
+            child: Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: SharedColor.primary,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                border: Border.all(
+                    color: Colors.white,
+                    width: SizeConfig.screenWidth! * 0.002),
+              ),
+              child: Text("Security Tips",
+                  style: CustomTextStyle.bodytext2white(context)),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: SizeConfig.screenHeight! * 0.4,
+          child: Drawer(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    GridItemSecurityTips(
+                        logo: "assets/icon/hacker.png", title: "Phishing"),
+                    GridItemSecurityTips(
+                        logo: "assets/icon/call.png", title: "Phone Scam"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    GridItemSecurityTips(
+                        logo: "assets/icon/message.png", title: "Fraud Email"),
+                    GridItemSecurityTips(
+                        logo: "assets/icon/pass.png",
+                        title: "Login Credential"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  securityPanel() {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 275),
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: RotatedBox(
+          quarterTurns: -1,
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                isOpenSecurity = true;
+              });
+              _scaffoldKey.currentState!.openEndDrawer();
+            },
+            child: Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: SharedColor.primary,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                border: Border.all(
+                    color: Colors.white,
+                    width: SizeConfig.screenWidth! * 0.002),
+              ),
+              child: Text("Security Tips",
+                  style: CustomTextStyle.bodytext2white(context)),
+            ),
           ),
         ),
       ),
