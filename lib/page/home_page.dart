@@ -4,7 +4,6 @@ import 'package:bank_islam/shared/text_style.dart';
 import 'package:bank_islam/widget/grid_item.dart';
 import 'package:bank_islam/widget/grid_item_home.dart';
 import 'package:flutter/material.dart';
-import 'package:sidebarx/sidebarx.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
