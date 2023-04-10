@@ -527,7 +527,9 @@ class _LoginPageState extends State<LoginPage> {
 
   securityPanel() {
     return Padding(
-      padding: EdgeInsets.only(bottom: 275),
+      padding: SizeConfig.pixelData == 1.0
+          ? EdgeInsets.only(bottom: 275)
+          : EdgeInsets.only(bottom: 150),
       child: Align(
         alignment: Alignment.centerRight,
         child: RotatedBox(
