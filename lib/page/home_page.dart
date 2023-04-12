@@ -1,9 +1,9 @@
 import 'package:bank_islam/dummy_model.dart';
 import 'package:bank_islam/shared/color.dart';
 import 'package:bank_islam/shared/size_config.dart';
-import 'package:bank_islam/shared/text_style.dart';
 import 'package:bank_islam/widget/grid_item.dart';
 import 'package:bank_islam/widget/grid_item_home.dart';
+import 'package:bankislam_texttheme/bankislam_texttheme.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
         leftSide(),
         Expanded(
           child: Container(
+            height: double.infinity,
             color: SharedColor.homeRightSidebg,
             child: Padding(
               padding: SizeConfig.pixelData == 1.0
@@ -62,11 +63,13 @@ class _HomePageState extends State<HomePage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text("GO Profile",
-                                        style: CustomTextStyle.bodytext4black(
-                                            context)),
+                                        style: CustomTheme.subtitle(context,
+                                            color: CustomTheme.graphite_black,
+                                            fontWeight: CustomTheme.bold)),
                                     Text("3,000 pts",
-                                        style: CustomTextStyle.bodytext2black(
-                                            context)),
+                                        style: CustomTheme.body1(context,
+                                            color: CustomTheme.graphite_black,
+                                            fontWeight: CustomTheme.semibold)),
                                   ],
                                 )
                               ],
@@ -79,7 +82,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: SizeConfig.screenHeight! * 0.03),
                     Text("Personalised For You",
-                        style: CustomTextStyle.textlabel3black(context)),
+                        style: CustomTheme.subtitle(context,
+                            color: CustomTheme.graphite_black,
+                            fontWeight: CustomTheme.semibold)),
                     SizedBox(height: SizeConfig.screenHeight! * 0.03),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -114,8 +119,9 @@ class _HomePageState extends State<HomePage> {
                                   (BuildContext context, bool isExpanded) {
                                 return ListTile(
                                   title: Text("My Frequent Transactions",
-                                      style: CustomTextStyle.textlabel3black(
-                                          context)),
+                                      style: CustomTheme.subtitle(context,
+                                          color: CustomTheme.graphite_black,
+                                          fontWeight: CustomTheme.semibold)),
                                 );
                               },
                               body: Padding(
@@ -132,15 +138,21 @@ class _HomePageState extends State<HomePage> {
                                               children: [
                                                 Text(
                                                   e.name,
-                                                  style: CustomTextStyle
-                                                      .textTitleExpansionPanel(
-                                                          context),
+                                                  style: CustomTheme.body2(
+                                                      context,
+                                                      color: CustomTheme
+                                                          .graphite_black,
+                                                      fontWeight:
+                                                          CustomTheme.medium),
                                                 ),
                                                 Text(
                                                   e.price,
-                                                  style: CustomTextStyle
-                                                      .textTitleExpansionPanel(
-                                                          context),
+                                                  style: CustomTheme.body2(
+                                                      context,
+                                                      color: CustomTheme
+                                                          .graphite_black,
+                                                      fontWeight:
+                                                          CustomTheme.medium),
                                                 ),
                                               ],
                                             ),
@@ -167,7 +179,9 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("My Monthly Spending",
-                              style: CustomTextStyle.textlabel3black(context)),
+                              style: CustomTheme.subtitle(context,
+                                  color: CustomTheme.graphite_black,
+                                  fontWeight: CustomTheme.semibold)),
                           SizedBox(width: SizeConfig.screenWidth! * 0.01),
                           Container(
                             padding: SizeConfig.pixelData == 1.0
@@ -186,8 +200,9 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Text(
                                   "Jan 2023",
-                                  style:
-                                      CustomTextStyle.bodytext5black(context),
+                                  style: CustomTheme.body2(context,
+                                      color: CustomTheme.graphite_black,
+                                      fontWeight: CustomTheme.medium),
                                 ),
                                 SizedBox(width: SizeConfig.screenWidth! * 0.01),
                                 Icon(Icons.keyboard_arrow_down_outlined)
@@ -248,15 +263,30 @@ class _HomePageState extends State<HomePage> {
   tabBarWidget() {
     return Row(
       children: [
-        Text("Accounts", style: CustomTextStyle.textlabel2red(context)),
+        Text("Accounts",
+            style: CustomTheme.subtitle(context,
+                color: CustomTheme.electric_red,
+                fontWeight: CustomTheme.semibold)),
         SizedBox(width: SizeConfig.screenWidth! * 0.03),
-        Text("Investment", style: CustomTextStyle.textlabel2black(context)),
+        Text("Investment",
+            style: CustomTheme.subtitle(context,
+                color: CustomTheme.graphite_black,
+                fontWeight: CustomTheme.semibold)),
         SizedBox(width: SizeConfig.screenWidth! * 0.03),
-        Text("Cards-i", style: CustomTextStyle.textlabel2black(context)),
+        Text("Cards-i",
+            style: CustomTheme.subtitle(context,
+                color: CustomTheme.graphite_black,
+                fontWeight: CustomTheme.semibold)),
         SizedBox(width: SizeConfig.screenWidth! * 0.03),
-        Text("Financing", style: CustomTextStyle.textlabel2black(context)),
+        Text("Financing",
+            style: CustomTheme.subtitle(context,
+                color: CustomTheme.graphite_black,
+                fontWeight: CustomTheme.semibold)),
         SizedBox(width: SizeConfig.screenWidth! * 0.03),
-        Text("Dreams", style: CustomTextStyle.textlabel2black(context)),
+        Text("Dreams",
+            style: CustomTheme.subtitle(context,
+                color: CustomTheme.graphite_black,
+                fontWeight: CustomTheme.semibold)),
       ],
     );
   }
@@ -311,10 +341,14 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Peace Be Upon you Liza",
-                          style: CustomTextStyle.bodytext3hite(context)),
+                          style: CustomTheme.headline3(context,
+                              color: CustomTheme.off_white,
+                              fontWeight: CustomTheme.bold)),
                       SizedBox(height: SizeConfig.screenHeight! * 0.03),
                       Text("You have RM 55,000.00",
-                          style: CustomTextStyle.headline3white(context)),
+                          style: CustomTheme.headline3(context,
+                              color: CustomTheme.off_white,
+                              fontWeight: CustomTheme.bold)),
                     ],
                   ),
                   Image.asset("assets/image/wallet.png",
@@ -327,7 +361,9 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Expanded(
                   child: Text("My Account Overview",
-                      style: CustomTextStyle.textlabel2black(context)),
+                      style: CustomTheme.subtitle(context,
+                          color: CustomTheme.graphite_black,
+                          fontWeight: CustomTheme.semibold)),
                 ),
                 Icon(Icons.grid_view_sharp, color: SharedColor.primary),
                 SizedBox(width: SizeConfig.screenWidth! * 0.01),

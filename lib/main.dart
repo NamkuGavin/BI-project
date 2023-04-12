@@ -12,10 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // theme: ThemeData(
-      //   bottomSheetTheme:
-      //       BottomSheetThemeData(backgroundColor: Colors.transparent),
-      // ),
       home: LoginPage(),
     );
   }

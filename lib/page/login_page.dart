@@ -1,7 +1,7 @@
 import 'package:bank_islam/page/home_page.dart';
 import 'package:bank_islam/shared/color.dart';
 import 'package:bank_islam/shared/size_config.dart';
-import 'package:bank_islam/shared/text_style.dart';
+import 'package:bankislam_texttheme/bankislam_texttheme.dart';
 import 'package:bank_islam/widget/grid_item.dart';
 import 'package:bank_islam/widget/grid_item_security_tips.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +59,9 @@ class _LoginPageState extends State<LoginPage> {
               Expanded(
                 child: Text(
                     "About Bank Islam | Terms & Conditions | Client Charter | User Guide | Privacy Notice © Bank Islam Malaysia Berhad (98127-X). All rights reserved.",
-                    style: CustomTextStyle.bodytext2white(context)),
+                    style: CustomTheme.caption(context,
+                        color: CustomTheme.off_white,
+                        fontWeight: CustomTheme.medium)),
               )
             ],
           ),
@@ -79,12 +81,16 @@ class _LoginPageState extends State<LoginPage> {
         Padding(
           padding: EdgeInsets.only(right: 50),
           child: Text("Zuhr, Kuala Lumpur 1:05pm",
-              style: CustomTextStyle.bodytext2white(context)),
+              style: CustomTheme.body2(context,
+                  color: CustomTheme.off_white,
+                  fontWeight: CustomTheme.medium)),
         ),
         Padding(
           padding: EdgeInsets.only(right: 50),
           child: Text("GO Lifestyle",
-              style: CustomTextStyle.bodytext1white(context)),
+              style: CustomTheme.subtitle(context,
+                  color: CustomTheme.off_white,
+                  fontWeight: CustomTheme.semibold)),
         ),
         Padding(
           padding: EdgeInsets.only(right: 50),
@@ -98,7 +104,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Padding(
               padding: EdgeInsets.all(15),
               child: Text("GO Register",
-                  style: CustomTextStyle.bodytext1black(context)),
+                  style: CustomTheme.button(context,
+                      color: CustomTheme.graphite_black,
+                      fontWeight: CustomTheme.bold)),
             ),
           ),
         )
@@ -128,10 +136,12 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("G O   B E Y O N D",
-            style: CustomTextStyle.headline1white(context)),
+            style: CustomTheme.headline2(context,
+                color: CustomTheme.off_white, fontWeight: CustomTheme.bold)),
         SizedBox(height: SizeConfig.screenHeight! * 0.03),
         Text("Islamic banking\nfor everyone",
-            style: CustomTextStyle.headline2white(context)),
+            style: CustomTheme.headline1(context,
+                color: CustomTheme.off_white, fontWeight: CustomTheme.bold)),
         SizedBox(height: SizeConfig.screenHeight! * 0.07),
         Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
@@ -140,11 +150,15 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               width: SizeConfig.screenWidth! * 0.35,
               child: TextFormField(
-                style: CustomTextStyle.textfield1(context),
+                style: CustomTheme.body2(context,
+                    color: CustomTheme.graphite_black,
+                    fontWeight: CustomTheme.medium),
                 decoration: InputDecoration(
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   labelText: "Enter your username",
-                  labelStyle: CustomTextStyle.textlabel1(context),
+                  labelStyle: CustomTheme.body2(context,
+                      color: CustomTheme.dark_grey,
+                      fontWeight: CustomTheme.medium),
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Image.asset("assets/icon/profile.png", scale: 1.75),
@@ -182,8 +196,9 @@ class _LoginPageState extends State<LoginPage> {
                             child: Padding(
                               padding: EdgeInsets.all(15),
                               child: Text("GO Login",
-                                  style:
-                                      CustomTextStyle.bodytext1white(context)),
+                                  style: CustomTheme.button(context,
+                                      color: CustomTheme.off_white,
+                                      fontWeight: CustomTheme.bold)),
                             ),
                           ),
                         ),
@@ -207,7 +222,9 @@ class _LoginPageState extends State<LoginPage> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                 child: Text("First Time User    |    Forgot Login Details?",
-                    style: CustomTextStyle.bodytext2white(context)),
+                    style: CustomTheme.caption(context,
+                        color: CustomTheme.prime_white,
+                        fontWeight: CustomTheme.regular)),
               ),
             )
           ],
@@ -284,10 +301,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.03),
               Text("L i z a I b r a h i m 9",
-                  style: CustomTextStyle.headline1black(context)),
+                  style: CustomTheme.headline3(context,
+                      color: CustomTheme.graphite_black,
+                      fontWeight: CustomTheme.bold)),
               SizedBox(height: SizeConfig.screenHeight! * 0.03),
               Text("Is this your security image\nand phrase?",
-                  style: CustomTextStyle.headline2black(context)),
+                  style: CustomTheme.headline2(context,
+                      color: CustomTheme.graphite_black,
+                      fontWeight: CustomTheme.bold)),
               SizedBox(height: SizeConfig.screenHeight! * 0.05),
               Center(
                   child: Wrap(
@@ -296,7 +317,10 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Image.asset("assets/image/icon_profile.png",
                       scale: SizeConfig.pixelData == 1.0 ? 1.75 : 3),
-                  Text("BTS", style: CustomTextStyle.bodytext1black(context))
+                  Text("BTS",
+                      style: CustomTheme.body1(context,
+                          color: CustomTheme.graphite_black,
+                          fontWeight: CustomTheme.semibold))
                 ],
               )),
               SizedBox(height: SizeConfig.screenHeight! * 0.1),
@@ -318,7 +342,9 @@ class _LoginPageState extends State<LoginPage> {
                         child: Padding(
                           padding: EdgeInsets.all(20),
                           child: Text("Not mine",
-                              style: CustomTextStyle.bodytext1black(context)),
+                              style: CustomTheme.button(context,
+                                  color: CustomTheme.graphite_black,
+                                  fontWeight: CustomTheme.semibold)),
                         ),
                       ),
                     ),
@@ -340,7 +366,9 @@ class _LoginPageState extends State<LoginPage> {
                         child: Padding(
                           padding: EdgeInsets.all(20),
                           child: Text("Yes",
-                              style: CustomTextStyle.bodytext1white(context)),
+                              style: CustomTheme.button(context,
+                                  color: CustomTheme.off_white,
+                                  fontWeight: CustomTheme.semibold)),
                         ),
                       ),
                     ),
@@ -388,20 +416,31 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.03),
               Text("L i z a I b r a h i m 9",
-                  style: CustomTextStyle.headline1black(context)),
+                  style: CustomTheme.headline3(context,
+                      color: CustomTheme.graphite_black,
+                      fontWeight: CustomTheme.bold)),
               SizedBox(height: SizeConfig.screenHeight! * 0.03),
               Text("Password, please",
-                  style: CustomTextStyle.headline2black(context)),
+                  style: CustomTheme.headline4(context,
+                      color: CustomTheme.graphite_black,
+                      fontWeight: CustomTheme.bold)),
               SizedBox(height: SizeConfig.screenHeight! * 0.03),
-              Text("Password", style: CustomTextStyle.bodytext2black(context)),
+              Text("Password",
+                  style: CustomTheme.body2(context,
+                      color: CustomTheme.graphite_black,
+                      fontWeight: CustomTheme.medium)),
               SizedBox(height: SizeConfig.screenHeight! * 0.01),
               TextFormField(
                 obscureText: true,
-                style: CustomTextStyle.textfield2(context),
+                style: CustomTheme.body2(context,
+                    color: CustomTheme.graphite_black,
+                    fontWeight: CustomTheme.medium),
                 decoration: InputDecoration(
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   labelText: "What’s your password?",
-                  labelStyle: CustomTextStyle.textlabel1(context),
+                  labelStyle: CustomTheme.body2(context,
+                      color: CustomTheme.dark_grey,
+                      fontWeight: CustomTheme.medium),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -413,7 +452,9 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 alignment: Alignment.topRight,
                 child: Text("Forgot Login Details?",
-                    style: CustomTextStyle.textinfored(context)),
+                    style: CustomTheme.body1(context,
+                        color: CustomTheme.electric_red,
+                        fontWeight: CustomTheme.semibold)),
               ),
               SizedBox(height: SizeConfig.screenHeight! * 0.1),
               Container(
@@ -428,7 +469,9 @@ class _LoginPageState extends State<LoginPage> {
                     Row(
                       children: [
                         Text("Important Notice",
-                            style: CustomTextStyle.textinfoblack(context)),
+                            style: CustomTheme.body1(context,
+                                color: CustomTheme.graphite_black,
+                                fontWeight: CustomTheme.medium)),
                         SizedBox(width: SizeConfig.screenWidth! * 0.01),
                         Image.asset("assets/icon/bell.png",
                             scale: SizeConfig.pixelData == 1.0 ? 1.5 : 2),
@@ -436,7 +479,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: SizeConfig.screenHeight! * 0.02),
                     Text("Avoid scams! Never reveal your TAC number to anyone.",
-                        style: CustomTextStyle.bodytext2black(context)),
+                        style: CustomTheme.body1(context,
+                            color: CustomTheme.graphite_black,
+                            fontWeight: CustomTheme.medium)),
                   ],
                 ),
               ),
@@ -460,7 +505,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       backgroundColor: SharedColor.primary),
                   child: Text("Login",
-                      style: CustomTextStyle.bodytext1white(context)),
+                      style: CustomTheme.button(context,
+                          color: CustomTheme.prime_white,
+                          fontWeight: CustomTheme.semibold)),
                 ),
               ),
             ],
@@ -491,7 +538,9 @@ class _LoginPageState extends State<LoginPage> {
                     width: SizeConfig.screenWidth! * 0.002),
               ),
               child: Text("Security Tips",
-                  style: CustomTextStyle.bodytext2white(context)),
+                  style: CustomTheme.caption(context,
+                      color: CustomTheme.off_white,
+                      fontWeight: CustomTheme.regular)),
             ),
           ),
         ),
@@ -551,7 +600,9 @@ class _LoginPageState extends State<LoginPage> {
                     width: SizeConfig.screenWidth! * 0.002),
               ),
               child: Text("Security Tips",
-                  style: CustomTextStyle.bodytext2white(context)),
+                  style: CustomTheme.caption(context,
+                      color: CustomTheme.off_white,
+                      fontWeight: CustomTheme.regular)),
             ),
           ),
         ),
