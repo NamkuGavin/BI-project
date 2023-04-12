@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons:
   google_fonts:
   page_transition:
+  bankislam_texttheme:
+    path: package/bankislam_texttheme
 
 dev_dependencies:
   flutter_test:
