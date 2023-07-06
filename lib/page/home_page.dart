@@ -1,8 +1,8 @@
 import 'package:bank_islam/dummy_model.dart';
 import 'package:bank_islam/shared/color.dart';
 import 'package:bank_islam/shared/size_config.dart';
+import 'package:bank_islam/widget/cards_home_item.dart';
 import 'package:bank_islam/widget/grid_item.dart';
-import 'package:bank_islam/widget/grid_item_home.dart';
 import 'package:bankislam_texttheme/bankislam_texttheme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -622,6 +622,60 @@ class _HomePageState extends State<HomePage> {
                 Icon(Icons.format_list_bulleted, color: SharedColor.icon)
               ],
             ),
+            SizedBox(height: SizeConfig.screenHeight! * 0.03),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CardsHomeItem(
+                  text1: "Qard Savings Account-i",
+                  text2: "RM 3,600.00",
+                  text3: "1212 1281 1939 92",
+                  logo: Image.asset("assets/icon/visa.png",
+                      scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
+                ),
+                CardsHomeItem(
+                  text1: "Al-Awfar Account-i",
+                  text2: "RM 2,300.00",
+                  text3: "02011 01 222222 3",
+                  logo: Image.asset("assets/icon/visa.png",
+                      scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
+                ),
+              ],
+            ),
+            SizedBox(height: SizeConfig.screenHeight! * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CardsHomeItem(
+                  text1: "Basic Savings Account-i",
+                  text2: "RM 221.00",
+                  text3: "02011 01 111111 2",
+                  logo: Image.asset("assets/icon/visa.png",
+                      scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
+                ),
+                Container(
+                    width: SizeConfig.screenWidth! * 0.28,
+                    height: SizeConfig.screenHeight! * 0.25,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/card/card1.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/icon/add.png", scale: 3.5),
+                        SizedBox(height: SizeConfig.screenHeight! * 0.02),
+                        Text("Apply New Account",
+                            style: CustomTheme.subtitle(context,
+                                color: CustomTheme.graphite_black,
+                                fontWeight: CustomTheme.semibold)),
+                      ],
+                    )),
+              ],
+            ),
           ],
         ),
       ),
@@ -633,34 +687,477 @@ class _HomePageState extends State<HomePage> {
       borderRadius: BorderRadius.horizontal(left: Radius.circular(25)),
       child: Drawer(
         width: SizeConfig.screenWidth! * 0.5,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(50, 30, 50, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconButton(
-                  onPressed: () {
-                    _scaffoldKey.currentState!.closeEndDrawer();
-                  },
-                  icon: Icon(
-                    Icons.close,
-                    size: SizeConfig.pixelData == 1.0 ? 30 : 20,
-                  )),
-              SizedBox(height: SizeConfig.screenHeight! * 0.05),
-              Text("T R A N S F E R",
-                  style: CustomTheme.headline3(context,
-                      color: CustomTheme.graphite_black,
-                      fontWeight: CustomTheme.bold)),
-              SizedBox(height: SizeConfig.screenHeight! * 0.03),
-              Text("Who do you want to\ntransfer to?",
-                  style: CustomTheme.headline4(context,
-                      color: CustomTheme.graphite_black,
-                      fontWeight: CustomTheme.bold)),
-              SizedBox(height: SizeConfig.screenHeight! * 0.03),
-            ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      _scaffoldKey.currentState!.closeEndDrawer();
+                    },
+                    icon: Icon(
+                      Icons.close,
+                      size: SizeConfig.pixelData == 1.0 ? 30 : 20,
+                    )),
+                SizedBox(height: SizeConfig.screenHeight! * 0.05),
+                Text("T R A N S F E R",
+                    style: CustomTheme.headline4(context,
+                        color: CustomTheme.graphite_black,
+                        fontWeight: CustomTheme.bold)),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Text("Who do you want to\ntransfer to?",
+                    style: CustomTheme.headline3(context,
+                        color: CustomTheme.graphite_black,
+                        fontWeight: CustomTheme.bold)),
+                SizedBox(height: SizeConfig.screenHeight! * 0.05),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Favourites",
+                            style: CustomTheme.subtitle(context,
+                                color: CustomTheme.graphite_black,
+                                fontWeight: CustomTheme.bold)),
+                        SizedBox(width: SizeConfig.screenWidth! * 0.01),
+                        Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          size: SizeConfig.pixelData == 1.0 ? 30 : 20,
+                        )
+                      ],
+                    ),
+                    Text("View all",
+                        style: CustomTheme.subtitle(context,
+                            color: CustomTheme.true_red,
+                            fontWeight: CustomTheme.bold)),
+                  ],
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                gridChoice(),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Text("New Transfer to",
+                    style: CustomTheme.subtitle(context,
+                        color: CustomTheme.graphite_black,
+                        fontWeight: CustomTheme.bold)),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.25),
+                        spreadRadius: 5,
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Account",
+                          style: CustomTheme.body1(context,
+                              color: CustomTheme.graphite_black,
+                              fontWeight: CustomTheme.bold)),
+                      Icon(Icons.person,
+                          size: SizeConfig.pixelData == 1.0 ? 30 : 20)
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.25),
+                        spreadRadius: 5,
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Mobile Number",
+                          style: CustomTheme.body1(context,
+                              color: CustomTheme.graphite_black,
+                              fontWeight: CustomTheme.bold)),
+                      Icon(Icons.phone_android,
+                          size: SizeConfig.pixelData == 1.0 ? 30 : 20)
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.05),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("View More",
+                        style: CustomTheme.subtitle(context,
+                            color: CustomTheme.graphite_black,
+                            fontWeight: CustomTheme.bold)),
+                    SizedBox(width: SizeConfig.screenWidth! * 0.01),
+                    Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      size: SizeConfig.pixelData == 1.0 ? 30 : 20,
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  gridChoice() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  height: SizeConfig.screenHeight! * 0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                        ),
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Dad CIMB",
+                            style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    SizeConfig.pixelData == 1.0 ? 15 : 12),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Transform.scale(
+                          scale: 1.75,
+                          child: Checkbox(
+                            fillColor: MaterialStatePropertyAll(
+                                CustomTheme.stone_grey),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            value: false,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  height: SizeConfig.screenHeight! * 0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                        ),
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Mom Al-Awfar",
+                            style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    SizeConfig.pixelData == 1.0 ? 15 : 12),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Transform.scale(
+                          scale: 1.75,
+                          child: Checkbox(
+                            fillColor: MaterialStatePropertyAll(
+                                CustomTheme.stone_grey),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            value: false,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  height: SizeConfig.screenHeight! * 0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                        ),
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Little Bro Bank\nRakyat",
+                            style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    SizeConfig.pixelData == 1.0 ? 15 : 12),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Transform.scale(
+                          scale: 1.75,
+                          child: Checkbox(
+                            fillColor: MaterialStatePropertyAll(
+                                CustomTheme.stone_grey),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            value: false,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: SizeConfig.screenHeight! * 0.01),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  height: SizeConfig.screenHeight! * 0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                        ),
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "My TH",
+                            style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    SizeConfig.pixelData == 1.0 ? 15 : 12),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Transform.scale(
+                          scale: 1.75,
+                          child: Checkbox(
+                            fillColor: MaterialStatePropertyAll(
+                                CustomTheme.stone_grey),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            value: false,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  height: SizeConfig.screenHeight! * 0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                        ),
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Katy ASB 1",
+                            style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    SizeConfig.pixelData == 1.0 ? 15 : 12),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Transform.scale(
+                          scale: 1.75,
+                          child: Checkbox(
+                            fillColor: MaterialStatePropertyAll(
+                                CustomTheme.stone_grey),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            value: false,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  height: SizeConfig.screenHeight! * 0.1,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                        ),
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Little Bro SSPN",
+                            style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    SizeConfig.pixelData == 1.0 ? 15 : 12),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Transform.scale(
+                          scale: 1.75,
+                          child: Checkbox(
+                            fillColor: MaterialStatePropertyAll(
+                                CustomTheme.stone_grey),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            value: false,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
