@@ -15,6 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final scrollCard = ScrollController();
+  final scrollContent = ScrollController();
   bool _isHoveringButton1 = false;
   bool _isHoveringButton2 = false;
   bool _isHoveringButton3 = false;
@@ -35,442 +37,7 @@ class _HomePageState extends State<HomePage> {
         body: Row(
           children: [
             leftSide(),
-            Expanded(
-              child: Container(
-                height: double.infinity,
-                color: SharedColor.homeRightSidebg,
-                child: Padding(
-                  padding: SizeConfig.pixelData == 1.0
-                      ? EdgeInsets.fromLTRB(40, 40, 40, 0)
-                      : EdgeInsets.fromLTRB(20, 20, 20, 0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              shadowColor: Colors.black,
-                              elevation: 8,
-                              color: Colors.white,
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(12, 8, 25, 8),
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/image/avatar_profile.png",
-                                      scale: SizeConfig.pixelData == 1.0
-                                          ? 1.3
-                                          : 2.25,
-                                    ),
-                                    SizedBox(
-                                        width: SizeConfig.screenWidth! * 0.01),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text("GO Profile",
-                                            style: CustomTheme.subtitle(context,
-                                                color:
-                                                    CustomTheme.graphite_black,
-                                                fontWeight: CustomTheme.bold)),
-                                        Text("3,000 pts",
-                                            style: CustomTheme.body1(context,
-                                                color:
-                                                    CustomTheme.graphite_black,
-                                                fontWeight:
-                                                    CustomTheme.semibold)),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Image.asset("assets/icon/logout.png",
-                                scale:
-                                    SizeConfig.pixelData == 1.0 ? 1.25 : 2.4),
-                          ],
-                        ),
-                        SizedBox(height: SizeConfig.screenHeight! * 0.03),
-                        Text("Personalised For You",
-                            style: CustomTheme.subtitle(context,
-                                color: CustomTheme.graphite_black,
-                                fontWeight: CustomTheme.semibold)),
-                        SizedBox(height: SizeConfig.screenHeight! * 0.03),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: SizeConfig.pixelData == 1.0
-                                    ? EdgeInsets.all(12)
-                                    : EdgeInsets.all(5),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    _scaffoldKey.currentState!.openEndDrawer();
-                                  },
-                                  child: MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    onHover: (PointerEvent event) => setState(
-                                        () => _isHoveringButton1 = true),
-                                    onExit: (PointerEvent event) => setState(
-                                        () => _isHoveringButton1 = false),
-                                    child: Container(
-                                      height: SizeConfig.screenHeight! * 0.15,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: _isHoveringButton1
-                                            ? Colors.white70
-                                            : Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.grey.withOpacity(0.25),
-                                            spreadRadius: 5,
-                                            blurRadius: 10,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                              "assets/icon/trade_dollar.png",
-                                              scale: SizeConfig.pixelData == 1.0
-                                                  ? 1.5
-                                                  : 2.5),
-                                          SizedBox(
-                                              height: SizeConfig.screenHeight! *
-                                                  0.02),
-                                          Text(
-                                            "Transfer",
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize:
-                                                    SizeConfig.pixelData == 1.0
-                                                        ? 15
-                                                        : 12),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: SizeConfig.pixelData == 1.0
-                                    ? EdgeInsets.all(12)
-                                    : EdgeInsets.all(5),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    _scaffoldKey.currentState!.openEndDrawer();
-                                  },
-                                  child: MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    onHover: (PointerEvent event) => setState(
-                                        () => _isHoveringButton2 = true),
-                                    onExit: (PointerEvent event) => setState(
-                                        () => _isHoveringButton2 = false),
-                                    child: Container(
-                                      height: SizeConfig.screenHeight! * 0.15,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: _isHoveringButton2
-                                            ? Colors.white70
-                                            : Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.grey.withOpacity(0.25),
-                                            spreadRadius: 5,
-                                            blurRadius: 10,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                              "assets/icon/card_dollar.png",
-                                              scale: SizeConfig.pixelData == 1.0
-                                                  ? 1.5
-                                                  : 2.5),
-                                          SizedBox(
-                                              height: SizeConfig.screenHeight! *
-                                                  0.02),
-                                          Text(
-                                            "Pay Bills",
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize:
-                                                    SizeConfig.pixelData == 1.0
-                                                        ? 15
-                                                        : 12),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: SizeConfig.pixelData == 1.0
-                                    ? EdgeInsets.all(12)
-                                    : EdgeInsets.all(5),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    _scaffoldKey.currentState!.openEndDrawer();
-                                  },
-                                  child: MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    onHover: (PointerEvent event) => setState(
-                                        () => _isHoveringButton3 = true),
-                                    onExit: (PointerEvent event) => setState(
-                                        () => _isHoveringButton3 = false),
-                                    child: Container(
-                                      height: SizeConfig.screenHeight! * 0.15,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: _isHoveringButton3
-                                            ? Colors.white70
-                                            : Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.grey.withOpacity(0.25),
-                                            spreadRadius: 5,
-                                            blurRadius: 10,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                              "assets/icon/profile_fav.png",
-                                              scale: SizeConfig.pixelData == 1.0
-                                                  ? 1.5
-                                                  : 2.5),
-                                          SizedBox(
-                                              height: SizeConfig.screenHeight! *
-                                                  0.02),
-                                          Text(
-                                            "Favourites",
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize:
-                                                    SizeConfig.pixelData == 1.0
-                                                        ? 15
-                                                        : 12),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: SizeConfig.pixelData == 1.0
-                                    ? EdgeInsets.all(12)
-                                    : EdgeInsets.all(5),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    _scaffoldKey.currentState!.openEndDrawer();
-                                  },
-                                  child: MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    onHover: (PointerEvent event) => setState(
-                                        () => _isHoveringButton4 = true),
-                                    onExit: (PointerEvent event) => setState(
-                                        () => _isHoveringButton4 = false),
-                                    child: Container(
-                                      height: SizeConfig.screenHeight! * 0.15,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: _isHoveringButton4
-                                            ? Colors.white70
-                                            : Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.grey.withOpacity(0.25),
-                                            spreadRadius: 5,
-                                            blurRadius: 10,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                              "assets/icon/trade_card.png",
-                                              scale: SizeConfig.pixelData == 1.0
-                                                  ? 1.5
-                                                  : 2.5),
-                                          SizedBox(
-                                              height: SizeConfig.screenHeight! *
-                                                  0.02),
-                                          Text(
-                                            "Reload",
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize:
-                                                    SizeConfig.pixelData == 1.0
-                                                        ? 15
-                                                        : 12),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: SizeConfig.screenHeight! * 0.03),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: ExpansionPanelList(
-                            expansionCallback: (int index, bool isExpanded) {
-                              setState(() {
-                                isExpand = !isExpanded;
-                              });
-                            },
-                            children: [
-                              ExpansionPanel(
-                                  isExpanded: isExpand,
-                                  headerBuilder:
-                                      (BuildContext context, bool isExpanded) {
-                                    return ListTile(
-                                      title: Text("My Frequent Transactions",
-                                          style: CustomTheme.subtitle(context,
-                                              color: CustomTheme.graphite_black,
-                                              fontWeight:
-                                                  CustomTheme.semibold)),
-                                    );
-                                  },
-                                  body: Padding(
-                                    padding: EdgeInsets.only(bottom: 25),
-                                    child: Column(
-                                      children: listTrans.map((e) {
-                                        return Column(
-                                          children: [
-                                            ListTile(
-                                                title: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Text(
-                                                      e.name,
-                                                      style: CustomTheme.body2(
-                                                          context,
-                                                          color: CustomTheme
-                                                              .graphite_black,
-                                                          fontWeight:
-                                                              CustomTheme
-                                                                  .medium),
-                                                    ),
-                                                    Text(
-                                                      e.price,
-                                                      style: CustomTheme.body2(
-                                                          context,
-                                                          color: CustomTheme
-                                                              .graphite_black,
-                                                          fontWeight:
-                                                              CustomTheme
-                                                                  .medium),
-                                                    ),
-                                                  ],
-                                                ),
-                                                trailing: Image.asset(
-                                                    "assets/icon/refresh.png",
-                                                    scale: 1.5)),
-                                            Divider(),
-                                          ],
-                                        );
-                                      }).toList(),
-                                    ),
-                                  ))
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: SizeConfig.screenHeight! * 0.03),
-                        Container(
-                          padding: EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("My Monthly Spending",
-                                  style: CustomTheme.subtitle(context,
-                                      color: CustomTheme.graphite_black,
-                                      fontWeight: CustomTheme.semibold)),
-                              SizedBox(width: SizeConfig.screenWidth! * 0.01),
-                              Container(
-                                padding: SizeConfig.pixelData == 1.0
-                                    ? EdgeInsets.symmetric(
-                                        vertical: 8, horizontal: 12)
-                                    : EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 8),
-                                decoration: BoxDecoration(
-                                  borderRadius: SizeConfig.pixelData == 1.0
-                                      ? BorderRadius.circular(15)
-                                      : BorderRadius.circular(8),
-                                  border: Border.all(color: Colors.black),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Jan 2023",
-                                      style: CustomTheme.body2(context,
-                                          color: CustomTheme.graphite_black,
-                                          fontWeight: CustomTheme.medium),
-                                    ),
-                                    SizedBox(
-                                        width: SizeConfig.screenWidth! * 0.01),
-                                    Icon(Icons.keyboard_arrow_down_outlined)
-                                  ],
-                                ),
-                              ),
-                              Icon(Icons.keyboard_arrow_down_outlined)
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            rightSide(),
           ],
         ));
   }
@@ -548,22 +115,25 @@ class _HomePageState extends State<HomePage> {
       flex: 2,
       child: Container(
         padding: EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              "assets/image/logo_bank.png",
-              scale: SizeConfig.pixelData == 1.0 ? 2.5 : 3,
-            ),
-            SizedBox(height: SizeConfig.screenHeight! * 0.03),
-            Row(
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: SingleChildScrollView(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                sideBar(),
-                homeOverview(),
+                Image.asset("assets/image/logo_bank.png",
+                    scale: SizeConfig.pixelData == 1.0 ? 2.5 : 3),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    sideBar(),
+                    homeOverview(),
+                  ],
+                )
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
@@ -579,101 +149,134 @@ class _HomePageState extends State<HomePage> {
           children: [
             tabBarWidget(),
             SizedBox(height: SizeConfig.screenHeight! * 0.03),
-            Container(
-              padding: SizeConfig.pixelData == 1.0
-                  ? EdgeInsets.fromLTRB(25, 25, 50, 50)
-                  : EdgeInsets.fromLTRB(20, 20, 25, 40),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  color: SharedColor.primary),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: SizeConfig.pixelData == 1.0
+                      ? EdgeInsets.fromLTRB(25, 25, 50, 50)
+                      : EdgeInsets.fromLTRB(20, 20, 25, 40),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: SharedColor.primary),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Peace Be Upon you Liza",
-                          style: CustomTheme.headline3(context,
-                              color: CustomTheme.off_white,
-                              fontWeight: CustomTheme.bold)),
-                      SizedBox(height: SizeConfig.screenHeight! * 0.03),
-                      Text("You have RM 55,000.00",
-                          style: CustomTheme.headline3(context,
-                              color: CustomTheme.off_white,
-                              fontWeight: CustomTheme.bold)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Peace Be Upon you Liza",
+                              style: CustomTheme.headline3(context,
+                                  color: CustomTheme.off_white,
+                                  fontWeight: CustomTheme.bold)),
+                          SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                          Text("You have RM 55,000.00",
+                              style: CustomTheme.headline3(context,
+                                  color: CustomTheme.off_white,
+                                  fontWeight: CustomTheme.bold)),
+                        ],
+                      ),
+                      Image.asset("assets/image/wallet.png",
+                          scale: SizeConfig.pixelData == 1.0 ? 1.75 : 2.5)
                     ],
                   ),
-                  Image.asset("assets/image/wallet.png",
-                      scale: SizeConfig.pixelData == 1.0 ? 1.75 : 2.5)
-                ],
-              ),
-            ),
-            SizedBox(height: SizeConfig.screenHeight! * 0.03),
-            Row(
-              children: [
-                Expanded(
-                  child: Text("My Account Overview",
-                      style: CustomTheme.subtitle(context,
-                          color: CustomTheme.graphite_black,
-                          fontWeight: CustomTheme.semibold)),
                 ),
-                Icon(Icons.grid_view_sharp, color: SharedColor.primary),
-                SizedBox(width: SizeConfig.screenWidth! * 0.01),
-                Icon(Icons.format_list_bulleted, color: SharedColor.icon)
-              ],
-            ),
-            SizedBox(height: SizeConfig.screenHeight! * 0.03),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CardsHomeItem(
-                  text1: "Qard Savings Account-i",
-                  text2: "RM 3,600.00",
-                  text3: "1212 1281 1939 92",
-                  logo: Image.asset("assets/icon/visa.png",
-                      scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
-                ),
-                CardsHomeItem(
-                  text1: "Al-Awfar Account-i",
-                  text2: "RM 2,300.00",
-                  text3: "02011 01 222222 3",
-                  logo: Image.asset("assets/icon/visa.png",
-                      scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
-                ),
-              ],
-            ),
-            SizedBox(height: SizeConfig.screenHeight! * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CardsHomeItem(
-                  text1: "Basic Savings Account-i",
-                  text2: "RM 221.00",
-                  text3: "02011 01 111111 2",
-                  logo: Image.asset("assets/icon/visa.png",
-                      scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
-                ),
-                Container(
-                    width: SizeConfig.screenWidth! * 0.28,
-                    height: SizeConfig.screenHeight! * 0.25,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/card/card1.png"),
-                        fit: BoxFit.fill,
-                      ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text("My Account Overview",
+                          style: CustomTheme.subtitle(context,
+                              color: CustomTheme.graphite_black,
+                              fontWeight: CustomTheme.semibold)),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    Icon(Icons.grid_view_sharp, color: SharedColor.primary),
+                    SizedBox(width: SizeConfig.screenWidth! * 0.01),
+                    Icon(Icons.format_list_bulleted, color: SharedColor.icon)
+                  ],
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Container(
+                  height: SizeConfig.screenHeight! * 0.52,
+                  child: Scrollbar(
+                    controller: scrollCard,
+                    thumbVisibility: true,
+                    trackVisibility: true,
+                    child: ListView(
+                      controller: scrollCard,
+                      shrinkWrap: true,
                       children: [
-                        Image.asset("assets/icon/add.png", scale: 3.5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CardsHomeItem(
+                              text1: "Qard Savings Account-i",
+                              text2: "RM 3,600.00",
+                              text3: "1212 1281 1939 92",
+                              logo: Image.asset("assets/icon/visa.png",
+                                  scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
+                            ),
+                            CardsHomeItem(
+                              text1: "Al-Awfar Account-i",
+                              text2: "RM 2,300.00",
+                              text3: "02011 01 222222 3",
+                              logo: Image.asset("assets/icon/visa.png",
+                                  scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
+                            ),
+                          ],
+                        ),
                         SizedBox(height: SizeConfig.screenHeight! * 0.02),
-                        Text("Apply New Account",
-                            style: CustomTheme.subtitle(context,
-                                color: CustomTheme.graphite_black,
-                                fontWeight: CustomTheme.semibold)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CardsHomeItem(
+                              text1: "Basic Savings Account-i",
+                              text2: "RM 221.00",
+                              text3: "02011 01 111111 2",
+                              logo: Image.asset("assets/icon/visa.png",
+                                  scale: SizeConfig.pixelData == 1.0 ? 4 : 5),
+                            ),
+                            Container(
+                                width: SizeConfig.screenWidth! * 0.28,
+                                height: SizeConfig.screenHeight! * 0.25,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage("assets/card/card1.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Image.asset("assets/icon/add.png",
+                                        scale: 3.5),
+                                    SizedBox(
+                                        height:
+                                            SizeConfig.screenHeight! * 0.02),
+                                    Text("Apply New Account",
+                                        style: CustomTheme.subtitle(context,
+                                            color: CustomTheme.graphite_black,
+                                            fontWeight: CustomTheme.semibold)),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        //TODO: kalo mau liat scroll 4 card nya, copy 1 row diatas sizedbox, paste di line sini
                       ],
-                    )),
+                    ),
+                  ),
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Container(
+                  padding: SizeConfig.pixelData == 1.0
+                      ? EdgeInsets.fromLTRB(25, 25, 50, 50)
+                      : EdgeInsets.fromLTRB(20, 20, 25, 40),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: SharedColor.primary),
+                  //TODO: isi info card
+                ),
               ],
             ),
           ],
@@ -1158,6 +761,403 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ],
+    );
+  }
+
+  rightSide() {
+    return Expanded(
+      child: Container(
+        height: double.infinity,
+        color: SharedColor.homeRightSidebg,
+        child: Padding(
+          padding: SizeConfig.pixelData == 1.0
+              ? EdgeInsets.fromLTRB(40, 40, 40, 0)
+              : EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      shadowColor: Colors.black,
+                      elevation: 8,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(12, 8, 25, 8),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              "assets/image/avatar_profile.png",
+                              scale: SizeConfig.pixelData == 1.0 ? 1.3 : 2.25,
+                            ),
+                            SizedBox(width: SizeConfig.screenWidth! * 0.01),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("GO Profile",
+                                    style: CustomTheme.subtitle(context,
+                                        color: CustomTheme.graphite_black,
+                                        fontWeight: CustomTheme.bold)),
+                                Text("3,000 pts",
+                                    style: CustomTheme.body1(context,
+                                        color: CustomTheme.graphite_black,
+                                        fontWeight: CustomTheme.semibold)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Image.asset("assets/icon/logout.png",
+                        scale: SizeConfig.pixelData == 1.0 ? 1.25 : 2.4),
+                  ],
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Text("Personalised For You",
+                    style: CustomTheme.subtitle(context,
+                        color: CustomTheme.graphite_black,
+                        fontWeight: CustomTheme.semibold)),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: SizeConfig.pixelData == 1.0
+                            ? EdgeInsets.all(12)
+                            : EdgeInsets.all(5),
+                        child: GestureDetector(
+                          onTap: () {
+                            _scaffoldKey.currentState!.openEndDrawer();
+                          },
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            onHover: (PointerEvent event) =>
+                                setState(() => _isHoveringButton1 = true),
+                            onExit: (PointerEvent event) =>
+                                setState(() => _isHoveringButton1 = false),
+                            child: Container(
+                              height: SizeConfig.screenHeight! * 0.15,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: _isHoveringButton1
+                                    ? Colors.white70
+                                    : Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.25),
+                                    spreadRadius: 5,
+                                    blurRadius: 10,
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("assets/icon/trade_dollar.png",
+                                      scale: SizeConfig.pixelData == 1.0
+                                          ? 1.5
+                                          : 2.5),
+                                  SizedBox(
+                                      height: SizeConfig.screenHeight! * 0.02),
+                                  Text(
+                                    "Transfer",
+                                    style: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: SizeConfig.pixelData == 1.0
+                                            ? 15
+                                            : 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: SizeConfig.pixelData == 1.0
+                            ? EdgeInsets.all(12)
+                            : EdgeInsets.all(5),
+                        child: GestureDetector(
+                          onTap: () {
+                            _scaffoldKey.currentState!.openEndDrawer();
+                          },
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            onHover: (PointerEvent event) =>
+                                setState(() => _isHoveringButton2 = true),
+                            onExit: (PointerEvent event) =>
+                                setState(() => _isHoveringButton2 = false),
+                            child: Container(
+                              height: SizeConfig.screenHeight! * 0.15,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: _isHoveringButton2
+                                    ? Colors.white70
+                                    : Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.25),
+                                    spreadRadius: 5,
+                                    blurRadius: 10,
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("assets/icon/card_dollar.png",
+                                      scale: SizeConfig.pixelData == 1.0
+                                          ? 1.5
+                                          : 2.5),
+                                  SizedBox(
+                                      height: SizeConfig.screenHeight! * 0.02),
+                                  Text(
+                                    "Pay Bills",
+                                    style: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: SizeConfig.pixelData == 1.0
+                                            ? 15
+                                            : 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: SizeConfig.pixelData == 1.0
+                            ? EdgeInsets.all(12)
+                            : EdgeInsets.all(5),
+                        child: GestureDetector(
+                          onTap: () {
+                            _scaffoldKey.currentState!.openEndDrawer();
+                          },
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            onHover: (PointerEvent event) =>
+                                setState(() => _isHoveringButton3 = true),
+                            onExit: (PointerEvent event) =>
+                                setState(() => _isHoveringButton3 = false),
+                            child: Container(
+                              height: SizeConfig.screenHeight! * 0.15,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: _isHoveringButton3
+                                    ? Colors.white70
+                                    : Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.25),
+                                    spreadRadius: 5,
+                                    blurRadius: 10,
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("assets/icon/profile_fav.png",
+                                      scale: SizeConfig.pixelData == 1.0
+                                          ? 1.5
+                                          : 2.5),
+                                  SizedBox(
+                                      height: SizeConfig.screenHeight! * 0.02),
+                                  Text(
+                                    "Favourites",
+                                    style: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: SizeConfig.pixelData == 1.0
+                                            ? 15
+                                            : 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: SizeConfig.pixelData == 1.0
+                            ? EdgeInsets.all(12)
+                            : EdgeInsets.all(5),
+                        child: GestureDetector(
+                          onTap: () {
+                            _scaffoldKey.currentState!.openEndDrawer();
+                          },
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            onHover: (PointerEvent event) =>
+                                setState(() => _isHoveringButton4 = true),
+                            onExit: (PointerEvent event) =>
+                                setState(() => _isHoveringButton4 = false),
+                            child: Container(
+                              height: SizeConfig.screenHeight! * 0.15,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: _isHoveringButton4
+                                    ? Colors.white70
+                                    : Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.25),
+                                    spreadRadius: 5,
+                                    blurRadius: 10,
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("assets/icon/trade_card.png",
+                                      scale: SizeConfig.pixelData == 1.0
+                                          ? 1.5
+                                          : 2.5),
+                                  SizedBox(
+                                      height: SizeConfig.screenHeight! * 0.02),
+                                  Text(
+                                    "Reload",
+                                    style: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: SizeConfig.pixelData == 1.0
+                                            ? 15
+                                            : 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: ExpansionPanelList(
+                    expansionCallback: (int index, bool isExpanded) {
+                      setState(() {
+                        isExpand = !isExpanded;
+                      });
+                    },
+                    children: [
+                      ExpansionPanel(
+                          isExpanded: isExpand,
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return ListTile(
+                              title: Text("My Frequent Transactions",
+                                  style: CustomTheme.subtitle(context,
+                                      color: CustomTheme.graphite_black,
+                                      fontWeight: CustomTheme.semibold)),
+                            );
+                          },
+                          body: Padding(
+                            padding: EdgeInsets.only(bottom: 25),
+                            child: Column(
+                              children: listTrans.map((e) {
+                                return Column(
+                                  children: [
+                                    ListTile(
+                                        title: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              e.name,
+                                              style: CustomTheme.body2(context,
+                                                  color: CustomTheme
+                                                      .graphite_black,
+                                                  fontWeight:
+                                                      CustomTheme.medium),
+                                            ),
+                                            Text(
+                                              e.price,
+                                              style: CustomTheme.body2(context,
+                                                  color: CustomTheme
+                                                      .graphite_black,
+                                                  fontWeight:
+                                                      CustomTheme.medium),
+                                            ),
+                                          ],
+                                        ),
+                                        trailing: Image.asset(
+                                            "assets/icon/refresh.png",
+                                            scale: 1.5)),
+                                    Divider(),
+                                  ],
+                                );
+                              }).toList(),
+                            ),
+                          ))
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.screenHeight! * 0.03),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("My Monthly Spending",
+                          style: CustomTheme.subtitle(context,
+                              color: CustomTheme.graphite_black,
+                              fontWeight: CustomTheme.semibold)),
+                      SizedBox(width: SizeConfig.screenWidth! * 0.01),
+                      Container(
+                        padding: SizeConfig.pixelData == 1.0
+                            ? EdgeInsets.symmetric(vertical: 8, horizontal: 12)
+                            : EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: SizeConfig.pixelData == 1.0
+                              ? BorderRadius.circular(15)
+                              : BorderRadius.circular(8),
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Jan 2023",
+                              style: CustomTheme.body2(context,
+                                  color: CustomTheme.graphite_black,
+                                  fontWeight: CustomTheme.medium),
+                            ),
+                            SizedBox(width: SizeConfig.screenWidth! * 0.01),
+                            Icon(Icons.keyboard_arrow_down_outlined)
+                          ],
+                        ),
+                      ),
+                      Icon(Icons.keyboard_arrow_down_outlined)
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
