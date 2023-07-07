@@ -21,7 +21,6 @@ class _LoginPageState extends State<LoginPage> {
   bool isOpenSecurity = false;
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
